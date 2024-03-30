@@ -7,11 +7,11 @@ import BackButton from "./BackButton";
 function Settings() {
   const settingsInfo = useContext(SettingsContext);
   return (
-    <div style={{ textAlign: "left" }}>
+    <div className="text-left w-[30vw] pt-[50px] my-0 mx-auto">
       <label>work: {settingsInfo.workMinutes}:00</label>
       <ReactSlider
         className={styles.slider}
-        thumbClassName={"thumb"}
+        thumbClassName={styles.thumb}
         trackClassName={"track"}
         value={settingsInfo.workMinutes}
         onChange={(newValue) => settingsInfo.setWorkMinutes(newValue)}
@@ -20,8 +20,8 @@ function Settings() {
       />
       <label>break: {settingsInfo.breakMinutes}:00</label>
       <ReactSlider
-        className={`${styles.slider} ${styles.slider}`}
-        thumbClassName={"thumb"}
+        className={`${styles.slider} ${styles.green}`}
+        thumbClassName={styles.thumb}
         trackClassName={"track"}
         value={settingsInfo.breakMinutes}
         onChange={(newValue) => settingsInfo.setBreakMinutes(newValue)}
