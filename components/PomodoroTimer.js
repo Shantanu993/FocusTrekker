@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import TimerControls from "./TimerControls";
 import TimeSettings from "./TimeSettings";
 import HistoryPanel from "./HistoryPanel";
 import Notification from "./Notification";
+import SettingsButton from "./SettingsButton";
+import SettingsContext from "./SettingsContext";
 
 const PomodoroTimer = () => {
+  const settingsInfo = useContext(SettingsContext);
   const [minutes, setMinutes] = useState(25); // Initial minutes
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
@@ -71,6 +74,9 @@ const PomodoroTimer = () => {
       </div>
       <TimerControls toggle={toggle} reset={reset} isActive={isActive} />
       <TimeSettings setTime={setTime} />
+      <div style={{ marginTop: "20px" }}>
+        <SettingsButton onClick={() => settingsInfo.setShowSettings(true)} />
+      </div>
       <HistoryPanel history={history} />
       <Notification
         showNotification={!isActive && minutes === 0 && seconds === 0}
