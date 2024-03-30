@@ -54,7 +54,9 @@ const PomodoroTimer = () => {
   };
 
   const setTime = (newTime) => {
+    setIsActive(false);
     setMinutes(newTime); // Update minutes based on newTime
+    setSeconds(0);
   };
 
   return (
