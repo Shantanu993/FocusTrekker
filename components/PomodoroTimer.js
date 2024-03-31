@@ -8,7 +8,7 @@ import SettingsContext from "./SettingsContext";
 
 const PomodoroTimer = () => {
   const settingsInfo = useContext(SettingsContext);
-  const [minutes, setMinutes] = useState(25); // Initial minutes
+  const [minutes, setMinutes] = useState(settingsInfo.workMinutes); // Initial minutes
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
@@ -53,7 +53,7 @@ const PomodoroTimer = () => {
 
   const reset = () => {
     setIsActive(false);
-    setMinutes(25);
+    setMinutes(settingsInfo.workMinutes);
     setSeconds(0);
   };
 
