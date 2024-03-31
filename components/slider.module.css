@@ -18,3 +18,9 @@
 .slider.green .thumb {
   background-color: var(--green);
 }
+.slider.yellow {
+  border: 2px solid var(--yellow);
+}
+.slider.yellow .thumb {
+  background-color: var(--yellow);
+}

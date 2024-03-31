@@ -8,6 +8,7 @@
   --background-end-rgb: 255, 255, 255;
   --red: #f54e4e;
   --green: #4aec8c;
+  --yellow: #e5f04b;
 }
 
 @media (prefers-color-scheme: dark) {
