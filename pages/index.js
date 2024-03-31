@@ -9,8 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [showSettings, setShowSettings] = useState(false);
-  const [workMinutes, setWorkMinutes] = useState(45);
-  const [breakMinutes, setBreakMinutes] = useState(15);
+  const [workMinutes, setWorkMinutes] = useState(25);
+  const [breakMinutes, setBreakMinutes] = useState(5);
+  const [longBreakMinutes, setLongBreakMinutes] = useState(15);
 
   return (
     <main>
@@ -20,8 +21,10 @@ export default function Home() {
           setShowSettings,
           workMinutes,
           breakMinutes,
+          longBreakMinutes,
           setWorkMinutes,
           setBreakMinutes,
+          setLongBreakMinutes,
         }}
       >
         {showSettings ? <Settings /> : <PomodoroTimer />}
