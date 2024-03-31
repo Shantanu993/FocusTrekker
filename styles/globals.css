@@ -6,6 +6,9 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --red: #f54e4e;
+  --green: #4aec8c;
+  --yellow: #e5f04b;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,6 +18,42 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+button {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  border: 0;
+  display: inline-block;
+  width: 100px;
+  cursor: pointer;
+}
+
+button.with-text {
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1.4rem;
+  line-height: 36px;
+}
+button.with-text svg {
+  width: 36px;
+  float: left;
+  margin-right: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+/* main {
+  padding-top: 50px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+} */
 
 body {
   color: rgb(var(--foreground-rgb));

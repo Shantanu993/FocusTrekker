@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import TimerControls from "./TimerControls";
 import TimeSettings from "./TimeSettings";
 import HistoryPanel from "./HistoryPanel";
 import Notification from "./Notification";
+import SettingsButton from "./SettingsButton";
+import SettingsContext from "./SettingsContext";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 const PomodoroTimer = () => {
-  const [minutes, setMinutes] = useState(25);
+  const settingsInfo = useContext(SettingsContext);
+  const [minutes, setMinutes] = useState(settingsInfo.workMinutes); // Initial minutes
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [history, setHistory] = useState([
-    "Completed at 19:40:19",
-    "Completed at 09:25:43",
-    "Completed at 13:42:23",
+    "Sample1: Completed at 19:40:19",
+    "Sample2: Completed at 09:25:43",
   ]);
 
   useEffect(() => {
@@ -48,7 +50,7 @@ const PomodoroTimer = () => {
 
   const reset = () => {
     setIsActive(false);
-    setMinutes(25);
+    setMinutes(settingsInfo.workMinutes);
     setSeconds(0);
   };
 
@@ -77,6 +79,9 @@ const PomodoroTimer = () => {
       />
       <TimerControls toggle={toggle} reset={reset} isActive={isActive} />
       <TimeSettings setTime={setTime} />
+      <div style={{ marginTop: "20px" }}>
+        <SettingsButton onClick={() => settingsInfo.setShowSettings(true)} />
+      </div>
       <HistoryPanel history={history} />
       <Notification
         showNotification={!isActive && minutes === 0 && seconds === 0}
