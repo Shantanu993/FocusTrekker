@@ -60,7 +60,8 @@ const PomodoroTimer = () => {
     setSeconds(0);
   };
 
-  const progress = ((minutes * 60 + seconds) / (25 * 60)) * 100;
+  const progress =
+    ((minutes * 60 + seconds) / (settingsInfo.workMinutes * 60)) * 100;
 
   return (
     <div className="flex flex-col justify-center align-center max-w-xl w-[100%] mx-auto my-10 bg-white p-8 rounded-xl shadow-lg">
