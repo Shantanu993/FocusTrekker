@@ -1,26 +1,26 @@
 .slider {
-  height: 40px;
-  border: 2px solid var(--red);
-  border-radius: 20px;
+  height: 43px;
+  border: 2px solid rgb(59 130 246 / 1);
+  border-radius: 22px;
 }
 
 .thumb {
-  background-color: var(--red);
+  background-color: rgb(59 130 246 / 1);
   cursor: pointer;
   width: 40px;
   height: 40px;
-  border-radius: 20px;
+  border-radius: 50%;
 }
 
-.slider.green {
-  border: 2px solid var(--green);
+.slider.purple {
+  border: 2px solid rgb(168 85 247 / 1);
 }
-.slider.green .thumb {
-  background-color: var(--green);
+.slider.purple .thumb {
+  background-color: rgb(168 85 247 / 1);
 }
 .slider.yellow {
-  border: 2px solid var(--yellow);
+  border: 2px solid rgb(234 179 8 / 1);
 }
 .slider.yellow .thumb {
-  background-color: var(--yellow);
+  background-color: rgb(234 179 8 / 1);
 }

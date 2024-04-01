@@ -5,7 +5,7 @@ import HistoryPanel from "./HistoryPanel";
 import Notification from "./Notification";
 import SettingsButton from "./SettingsButton";
 import SettingsContext from "./SettingsContext";
-import { CircularProgressbar } from "react-circular-progressbar";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 const PomodoroTimer = () => {
@@ -13,6 +13,7 @@ const PomodoroTimer = () => {
   const [minutes, setMinutes] = useState(settingsInfo.workMinutes); // Initial minutes
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [color, setColor] = useState("rgb(59, 130, 246 / 1)");
   const [history, setHistory] = useState([
     "Sample1: Completed at 19:40:19",
     "Sample2: Completed at 09:25:43",
@@ -54,32 +55,58 @@ const PomodoroTimer = () => {
     setSeconds(0);
   };
 
-  const setTime = (newTime) => {
+  const setTime = (newTime, newColor) => {
     setIsActive(false);
     setMinutes(newTime);
+    setColor(newColor);
     setSeconds(0);
   };
 
-  const progress = ((minutes * 60 + seconds) / (25 * 60)) * 100;
+  const progress =
+    ((minutes * 60 + seconds) / (settingsInfo.workMinutes * 60)) * 100;
 
   return (
-    <div className="max-w-lg mx-auto mt-20 bg-white p-8 rounded-xl shadow-lg">
-      <h1 className="text-3xl font-extrabold text-center mb-8 text-blue-700">
+    <div className="flex flex-col justify-center align-center max-w-xl w-[100%] mx-auto my-10 bg-white p-8 rounded-xl shadow-lg">
+      <h1 className="text-4xl font-extrabold text-center mb-8 text-blue-800">
         Pomodoro Timer
       </h1>
       {/* <div className="text-7xl font-extrabold text-center mb-8 text-blue-700">
         {minutes.toString().padStart(2, "0")}:
         {seconds.toString().padStart(2, "0")}
       </div> */}
-      <CircularProgressbar
-        value={progress}
-        text={`${minutes.toString().padStart(2, "0")}:${seconds
-          .toString()
-          .padStart(2, "0")}`}
-      />
+      <TimeSettings setTime={setTime} setColor={setColor} />
+      <div className="w-[50%] mx-auto my-4">
+        <CircularProgressbar
+          value={progress}
+          text={`${minutes.toString().padStart(2, "0")}:${seconds
+            .toString()
+            .padStart(2, "0")}`}
+          styles={buildStyles({
+            // Rotation of path and trail, in number of turns (0-1)
+            rotation: 0,
+
+            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+            strokeLinecap: "round",
+
+            // Text size
+            textSize: "1.25rem",
+
+            // How long animation takes to go from one percentage to another, in seconds
+            pathTransitionDuration: 0.5,
+
+            // Can specify path transition in more detail, or remove it entirely
+            // pathTransition: 'none',
+
+            // Colors
+            pathColor: `${color}`,
+            textColor: `${color}`,
+            trailColor: `#D3D3D3`,
+            backgroundColor: `${color}`,
+          })}
+        />
+      </div>
       <TimerControls toggle={toggle} reset={reset} isActive={isActive} />
-      <TimeSettings setTime={setTime} />
-      <div style={{ marginTop: "20px" }}>
+      <div className="w-[50%] mx-auto flex justify-center space-x-4 mt-6 mb-6">
         <SettingsButton onClick={() => settingsInfo.setShowSettings(true)} />
       </div>
       <HistoryPanel history={history} />
