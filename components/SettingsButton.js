@@ -1,10 +1,10 @@
 function SettingsButton(props) {
   return (
     <button {...props} className="text-sky-400 text-2xl w-auto">
-      <div className="flex flex-row gap-2 justify-center align-center">
+      <div className="flex flex-row gap-2 justify-center align-center font-semibold">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-auto w-[20%]"
+          className="h-auto w-[15%]"
           viewBox="0 0 20 20"
           fill="currentColor"
         >

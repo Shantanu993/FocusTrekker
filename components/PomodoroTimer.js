@@ -79,10 +79,7 @@ const PomodoroTimer = () => {
           .padStart(2, "0")}`}
       />
       <TimerControls toggle={toggle} reset={reset} isActive={isActive} />
-      <div
-        style={{ marginTop: "20px" }}
-        className="w-[40%] mx-auto flex justify-center space-x-4 mt-6 mb-6"
-      >
+      <div className="w-[50%] mx-auto flex justify-center space-x-4 mt-6 mb-6">
         <SettingsButton onClick={() => settingsInfo.setShowSettings(true)} />
       </div>
       <HistoryPanel history={history} />
