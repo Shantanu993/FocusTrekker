@@ -5,7 +5,7 @@ import HistoryPanel from "./HistoryPanel";
 import Notification from "./Notification";
 import SettingsButton from "./SettingsButton";
 import SettingsContext from "./SettingsContext";
-import { CircularProgressbar } from "react-circular-progressbar";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 const PomodoroTimer = () => {
@@ -13,6 +13,7 @@ const PomodoroTimer = () => {
   const [minutes, setMinutes] = useState(settingsInfo.workMinutes); // Initial minutes
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [color, setColor] = useState("rgb(59, 130, 246 / 1)");
   const [history, setHistory] = useState([
     "Sample1: Completed at 19:40:19",
     "Sample2: Completed at 09:25:43",
@@ -54,9 +55,10 @@ const PomodoroTimer = () => {
     setSeconds(0);
   };
 
-  const setTime = (newTime) => {
+  const setTime = (newTime, newColor) => {
     setIsActive(false);
     setMinutes(newTime);
+    setColor(newColor);
     setSeconds(0);
   };
 
@@ -72,13 +74,35 @@ const PomodoroTimer = () => {
         {minutes.toString().padStart(2, "0")}:
         {seconds.toString().padStart(2, "0")}
       </div> */}
-      <TimeSettings setTime={setTime} />
+      <TimeSettings setTime={setTime} setColor={setColor} />
       <div className="w-[50%] mx-auto my-4">
         <CircularProgressbar
           value={progress}
           text={`${minutes.toString().padStart(2, "0")}:${seconds
             .toString()
             .padStart(2, "0")}`}
+          styles={buildStyles({
+            // Rotation of path and trail, in number of turns (0-1)
+            rotation: 0,
+
+            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+            strokeLinecap: "round",
+
+            // Text size
+            textSize: "1.25rem",
+
+            // How long animation takes to go from one percentage to another, in seconds
+            pathTransitionDuration: 0.5,
+
+            // Can specify path transition in more detail, or remove it entirely
+            // pathTransition: 'none',
+
+            // Colors
+            pathColor: `${color}`,
+            textColor: `${color}`,
+            trailColor: `#D3D3D3`,
+            backgroundColor: `${color}`,
+          })}
         />
       </div>
       <TimerControls toggle={toggle} reset={reset} isActive={isActive} />
