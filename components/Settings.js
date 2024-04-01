@@ -44,7 +44,7 @@ function Settings() {
         min={1}
         max={120}
       />
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <div className="mt-[20px] text-center">
         <BackButton onClick={() => settingsInfo.setShowSettings(false)} />
       </div>
     </div>
