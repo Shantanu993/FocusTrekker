@@ -8,7 +8,9 @@ function Settings() {
   const settingsInfo = useContext(SettingsContext);
   return (
     <div className="text-left w-[30vw] pt-[50px] my-0 mx-auto">
-      <label>work: {settingsInfo.workMinutes}:00</label>
+      <label className="text-xl font-semibold">
+        Work: {settingsInfo.workMinutes}:00
+      </label>
       <ReactSlider
         className={styles.slider}
         thumbClassName={styles.thumb}
@@ -18,9 +20,11 @@ function Settings() {
         min={1}
         max={120}
       />
-      <label>break: {settingsInfo.breakMinutes}:00</label>
+      <label className="text-xl font-semibold">
+        Break: {settingsInfo.breakMinutes}:00
+      </label>
       <ReactSlider
-        className={`${styles.slider} ${styles.green}`}
+        className={`${styles.slider} ${styles.yellow}`}
         thumbClassName={styles.thumb}
         trackClassName={"track"}
         value={settingsInfo.breakMinutes}
@@ -28,9 +32,11 @@ function Settings() {
         min={1}
         max={120}
       />
-      <label>break: {settingsInfo.longBreakMinutes}:00</label>
+      <label className="text-xl font-semibold">
+        Long Break: {settingsInfo.longBreakMinutes}:00
+      </label>
       <ReactSlider
-        className={`${styles.slider} ${styles.yellow}`}
+        className={`${styles.slider} ${styles.purple}`}
         thumbClassName={styles.thumb}
         trackClassName={"track"}
         value={settingsInfo.longBreakMinutes}
