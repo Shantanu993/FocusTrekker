@@ -4,7 +4,7 @@ function SettingsButton(props) {
       <div className="flex flex-row gap-2 justify-center align-center font-semibold">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-auto w-[15%]"
+          className="h-auto w-[12%]"
           viewBox="0 0 20 20"
           fill="currentColor"
         >

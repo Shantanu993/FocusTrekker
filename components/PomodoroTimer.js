@@ -63,8 +63,8 @@ const PomodoroTimer = () => {
   const progress = ((minutes * 60 + seconds) / (25 * 60)) * 100;
 
   return (
-    <div className="max-w-lg mx-auto mt-20 bg-white p-8 rounded-xl shadow-lg">
-      <h1 className="text-3xl font-extrabold text-center mb-8 text-blue-700">
+    <div className="flex flex-col justify-center align-center max-w-xl w-[100%] mx-auto my-10 bg-white p-8 rounded-xl shadow-lg">
+      <h1 className="text-4xl font-extrabold text-center mb-8 text-blue-800">
         Pomodoro Timer
       </h1>
       {/* <div className="text-7xl font-extrabold text-center mb-8 text-blue-700">
@@ -72,12 +72,14 @@ const PomodoroTimer = () => {
         {seconds.toString().padStart(2, "0")}
       </div> */}
       <TimeSettings setTime={setTime} />
-      <CircularProgressbar
-        value={progress}
-        text={`${minutes.toString().padStart(2, "0")}:${seconds
-          .toString()
-          .padStart(2, "0")}`}
-      />
+      <div className="w-[50%] mx-auto my-4">
+        <CircularProgressbar
+          value={progress}
+          text={`${minutes.toString().padStart(2, "0")}:${seconds
+            .toString()
+            .padStart(2, "0")}`}
+        />
+      </div>
       <TimerControls toggle={toggle} reset={reset} isActive={isActive} />
       <div className="w-[50%] mx-auto flex justify-center space-x-4 mt-6 mb-6">
         <SettingsButton onClick={() => settingsInfo.setShowSettings(true)} />
