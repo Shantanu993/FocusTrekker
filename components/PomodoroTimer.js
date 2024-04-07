@@ -14,6 +14,7 @@ const PomodoroTimer = () => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [color, setColor] = useState("rgb(59, 130, 246 / 1)");
+  const [session, setSession] = useState(0);
   const [history, setHistory] = useState([
     "Sample1: Completed at 19:40:19",
     "Sample2: Completed at 09:25:43",
@@ -28,6 +29,7 @@ const PomodoroTimer = () => {
           if (minutes === 0) {
             clearInterval(intervalId);
             setIsActive(false);
+            setSession(session + 1);
             setHistory((prevHistory) => [
               ...prevHistory,
               `Completed at ${new Date().toLocaleTimeString()}`,
@@ -109,7 +111,7 @@ const PomodoroTimer = () => {
       <div className="w-[50%] mx-auto flex justify-center space-x-4 mt-6 mb-6">
         <SettingsButton onClick={() => settingsInfo.setShowSettings(true)} />
       </div>
-      <HistoryPanel history={history} />
+      <HistoryPanel history={history} session={session} />
       <Notification
         showNotification={!isActive && minutes === 0 && seconds === 0}
       />
